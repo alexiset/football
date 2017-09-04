@@ -1,5 +1,6 @@
-import {FootballObject} from './object';
-import {FIELD_WIDTH, FIELD_HEIGHT} from './field';
+import { FootballObject } from './object';
+import { FIELD_WIDTH, FIELD_HEIGHT } from './field';
+import { BASE_URL } from './const';
 
 export class Ball extends FootballObject {
 
@@ -25,12 +26,12 @@ export class Ball extends FootballObject {
             const loader = new THREE.ObjectLoader();
             const textureLoader = new THREE.TextureLoader();
 
-            textureLoader.load('/resources/textures/ball.jpg', (texture: any) => {
+            textureLoader.load(`${ BASE_URL }/resources/textures/ball.jpg`, (texture: any) => {
                 const material = new THREE.MeshBasicMaterial({
                     map: texture
                 });
 
-                loader.load('/resources/models/ball.json', (object: any) => {
+                loader.load(`${ BASE_URL }/resources/models/ball.json`, (object: any) => {
                     this.mesh = new THREE.Mesh(object.children[0].geometry, material);
                     this.mesh.scale.set(.01, .01, .01);
                     this.scene.add(this.mesh);

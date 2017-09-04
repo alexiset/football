@@ -1,6 +1,6 @@
-import {Player, PlayerType} from './player';
-import {FIELD_WIDTH, FIELD_HEIGHT} from './field';
-import {Utils} from './utils';
+import { Player, PlayerType } from './player';
+import { FIELD_WIDTH, FIELD_HEIGHT } from './field';
+import { Utils } from './utils';
 
 export interface ITeamOptions {
     side: string;

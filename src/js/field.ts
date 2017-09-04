@@ -1,3 +1,5 @@
+import { BASE_URL } from './const';
+
 export const FIELD_WIDTH = 70;
 export const FIELD_HEIGHT = 15;
 
@@ -10,7 +12,7 @@ export class Field {
 
         const loader = new THREE.TextureLoader();
 
-        loader.load('resources/textures/field.jpg', (texture: any) => {
+        loader.load(`${ BASE_URL }/resources/textures/field.jpg`, (texture: any) => {
             const material = new THREE.MeshBasicMaterial({
                 map: texture
             });

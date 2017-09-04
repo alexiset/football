@@ -1,5 +1,6 @@
-import {Field} from './field';
-import {FootballObject} from './object';
+import { Field } from './field';
+import { FootballObject } from './object';
+import { BASE_URL } from './const';
 
 export enum PlayerType {
     DEFENDER,
@@ -50,7 +51,7 @@ export class Player extends FootballObject {
 
                 resolve();
             };
-            loader.load(`/resources/models/${model}`);
+            loader.load(`${ BASE_URL }/resources/models/${model}`);
         });
     }
 
@@ -63,7 +64,7 @@ export class Player extends FootballObject {
     setTexture(textureName: string) {
         const loader = new THREE.TextureLoader();
 
-        loader.load(`/resources/textures/${textureName}`, (texture: any) => {
+        loader.load(`${ BASE_URL }/resources/textures/${textureName}`, (texture: any) => {
             this.mesh.material = this.mesh.material.clone();
             texture.flipY = false;
             this.mesh.material.map = texture;
