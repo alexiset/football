@@ -1,0 +1,29 @@
+{
+	"name": "football",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"clean": "rm -rf ./tmp ./dist",
+		"copy": "./bin/copy",
+		"ts": "./node_modules/.bin/tsc",
+		"requirejs": "./bin/requirejs",
+		"js": "npm run ts && npm run requirejs",
+		"css": "./bin/compile-css",
+		"build": "npm run clean && npm run js && npm run css && npm run copy",
+		"server": "./node_modules/.bin/http-server ./dist",
+		"dev": "./bin/watcher & npm run server"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"chokidar": "^1.7.0",
+		"http-server": "^0.10.0",
+		"requirejs": "^2.3.4",
+		"stylus": "^0.54.5",
+		"typescript": "^2.4.2"
+	},
+	"dependencies": {
+		"three": "^0.86.0"
+	}
+}

@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+const requirejs = require('requirejs');
+
+const config = {
+    baseUrl: "tmp/js",
+    dir: "./dist/js",
+    optimize: 'none',
+    preserveLicenseComments: false,
+    generateSourceMaps: false,
+    wrap: {
+        startFile: './node_modules/requirejs/require.js'
+    },
+    modules: [
+        {
+            name: 'football'
+        }
+    ]
+};
+
+requirejs.optimize(config, function (results) {
+    console.log(results);
+});

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [ ! -d ./dist/css ]; then
+	mkdir -p ./dist/css
+fi
+
+./node_modules/.bin/stylus ./src/styles/index.styl -o ./dist/css/styles.css

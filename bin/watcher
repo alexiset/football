@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+
+const chokidar = require('chokidar');
+const path = require('path');
+const {exec} = require('child_process');
+
+class Watcher {
+
+    constructor() {
+        chokidar.watch('src', {
+            ignored: /(^|[\/\\])\../,
+            ignoreInitial: true
+        }).on('all', (event, filename) => {
+            console.log(event, path.extname(filename));
+            switch (path.extname(filename)) {
+            case '.html':
+            case '.json':
+                this.runCommand('copy');
+                break;
+            case '.ts':
+                this.runCommand('js')
+                    .then(() => this.runCommand('copy'));
+                break;
+            case '.styl':
+                this.runCommand('css');
+                break;
+            }
+        });
+    }
+
+    runCommand(command) {
+        return new Promise((resolve, reject) => {
+            exec(`npm run ${command}`, {
+                cwd: process.cwd()
+            }, (error, stdout, stderr) => {
+                if (error) {
+                    console.log('Error: ', error, stderr);
+                    reject(error);
+                } else {
+                    console.log(stdout);
+                    resolve();
+                }
+            });
+        });
+    }
+
+}
+
+new Watcher();

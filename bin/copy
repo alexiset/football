@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+cp ./src/*.html ./dist
+
+if [ ! -d ./dist/js/libs ]; then
+	mkdir -p ./dist/js/libs
+fi
+
+if [ ! -d ./dist/js/libs/three/loaders ]; then
+	mkdir -p ./dist/js/libs/three/loaders
+fi
+
+cp ./node_modules/three/build/three.js ./dist/js/libs/three.js
+cp -r ./node_modules/three/examples/js/loaders/sea3d ./dist/js/libs/three/loaders/sea3d
+cp -r ./node_modules/three/examples/js/loaders/TDSLoader.js ./dist/js/libs/three/loaders/TDSLoader.js
+
+cp -r ./src/resources ./dist/resources
