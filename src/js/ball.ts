@@ -1,6 +1,5 @@
 import {FootballObject} from './object';
-import {FIELD_WIDTH} from '../../dist/js/field';
-import {FIELD_HEIGHT} from './field';
+import {FIELD_WIDTH, FIELD_HEIGHT} from './field';
 
 export class Ball extends FootballObject {
 
